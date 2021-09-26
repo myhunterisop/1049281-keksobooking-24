@@ -20,8 +20,8 @@ const getRandomIntFromRange = function (from, to) {
 getRandomIntFromRange(0, 100);
 
 function randomFloatInteger(min, max, float = 0) { //https://learn.javascript.ru/task/random-int-min-max
-  let rand = min + Math.random() * (max + 1 - min);
-  return rand.toFixed(float)
+  const rand = min + Math.random() * (max + 1 - min);
+  return rand.toFixed(float);
 }
 
 randomFloatInteger(0, 100, 6);
