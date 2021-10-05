@@ -1,17 +1,16 @@
-const getRandomIntFromRange = function (from, to) {
+const getRandomIntFromRange = (from, to) => {
   const result = Math.floor(Math.random() * (to - from + 1)) + from; // https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 
   if (from < 0 || to < 0) {
-    return 'Введите положительные числа.';
+    throw new Error('Введите положительные числа');
   }
 
   if (to < from) {
-    `Возможно, вы имели в виду от ${to} до ${from}?`;
-    return result;
+    throw new Error(`Возможно, вы имели в виду от ${to} до ${from}?`);
   }
 
   if (to === from) {
-    return 'Введите корректный диапазон.';
+    throw new Error('Введите корректный диапазон.');
   }
 
   return result;
@@ -19,9 +18,9 @@ const getRandomIntFromRange = function (from, to) {
 
 getRandomIntFromRange(0, 100);
 
-function randomFloatInteger(min, max, float = 0) { //https://learn.javascript.ru/task/random-int-min-max
-  const rand = min + Math.random() * (max + 1 - min);
-  return rand.toFixed(float);
-}
+const getRandomFloatIntFromRange = (min, max, float = 0) => {
+  const rand = min + Math.random() * (max + 1 - min); //https://learn.javascript.ru/task/random-int-min-max
+  return Number(rand.toFixed(float));
+};
 
-randomFloatInteger(0, 100, 6);
+getRandomFloatIntFromRange(0, 100, 6);
