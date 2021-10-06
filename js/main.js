@@ -1,6 +1,4 @@
 const getRandomIntFromRange = (from, to) => {
-  const result = Math.floor(Math.random() * (to - from + 1)) + from; // https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Math/random
-
   if (from < 0 || to < 0) {
     throw new Error('Введите положительные числа');
   }
@@ -13,7 +11,7 @@ const getRandomIntFromRange = (from, to) => {
     throw new Error('Введите корректный диапазон.');
   }
 
-  return result;
+  return Math.floor(Math.random() * (to - from + 1)) + from; // https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 };
 
 getRandomIntFromRange(0, 100);
