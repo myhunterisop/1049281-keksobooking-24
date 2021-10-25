@@ -76,3 +76,4 @@ const AD = () => ({
 });
 
 const ALL_ADS = Array.from({ length: NUMBER_OF_AD }, AD);
+console.log(ALL_ADS);
