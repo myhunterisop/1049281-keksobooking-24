@@ -12,22 +12,22 @@ const getRandomPositiveFloat = (from, to, digits = 1) => {
   return Number(result.toFixed(digits));
 };
 
-let getAvatarId = (number) => {
+const getAvatarId = (number) => {
   if (String(number).length === 1) {
     number = `0${number}`;
   }
   return number;
 };
 
-let offerTypesArr = ['palace', 'flat', 'house', 'bungalow', 'hotel'];
-let offerCheckInOutArr = ['12:00', '13:00', '14:00'];
+const offerTypesArr = ['palace', 'flat', 'house', 'bungalow', 'hotel'];
+const offerCheckInOutArr = ['12:00', '13:00', '14:00'];
 
-let getSingleRandomItemFromArr = (arr) => arr[~~(Math.random() * arr.length)];
+const getSingleRandomItemFromArr = (arr) => arr[~~(Math.random() * arr.length)];
 
-let offerFeaturesArr = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator'];
-let offerPhotosArr = ['https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg', 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg'];
+const offerFeaturesArr = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator'];
+const offerPhotosArr = ['https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg', 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg'];
 
-let getRandomItemsFromArr = (arr) => {
+const getRandomItemsFromArr = (arr) => {
   const result = [];
   const maxLength = arr.length;
   const newArrayLength = getRandomPositiveInteger(1, maxLength);
@@ -43,16 +43,16 @@ let getRandomItemsFromArr = (arr) => {
   return result;
 };
 
-let locationLat = getRandomPositiveFloat(35.65000, 35.70000, 5);
-let locationLng = getRandomPositiveFloat(139.70000, 139.80000, 5);
+const locationLat = getRandomPositiveFloat(35.65000, 35.70000, 5);
+const locationLng = getRandomPositiveFloat(139.70000, 139.80000, 5);
 
-let offerTitlesArr = ['Объявление №1', 'Объявление №2', 'Объявление №3', 'Объявление №4', 'Объявление №5', 'Объявление №6', 'Объявление №7', 'Объявление №8', 'Объявление №9', 'Объявление №10'];
+const offerTitlesArr = ['Объявление №1', 'Объявление №2', 'Объявление №3', 'Объявление №4', 'Объявление №5', 'Объявление №6', 'Объявление №7', 'Объявление №8', 'Объявление №9', 'Объявление №10'];
 
-let offerDescriptionsArr = ['Евроремонт', 'Прекрасный вид из окна', 'Хорошее соотношение цена / качество', 'Историческая часть города', 'Метро рядом'];
+const offerDescriptionsArr = ['Евроремонт', 'Прекрасный вид из окна', 'Хорошее соотношение цена / качество', 'Историческая часть города', 'Метро рядом'];
 
-let numberOfAdvertisement = 10;
+const numberOfAdvertisement = 10;
 
-let advertisement = () => ({
+const advertisement = () => ({
   autor: {
     avatar: `img/avatars/user${getAvatarId(getRandomPositiveInteger(1, 10))}.png`,
   },
