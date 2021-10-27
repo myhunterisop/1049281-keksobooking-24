@@ -1,3 +1,51 @@
+const offerTitles = [
+  'Объявление №1',
+  'Объявление №2',
+  'Объявление №3',
+  'Объявление №4',
+  'Объявление №5',
+  'Объявление №6',
+  'Объявление №7',
+  'Объявление №8',
+  'Объявление №9',
+  'Объявление №10',
+];
+
+const offerDescriptions = [
+  'Евроремонт',
+  'Прекрасный вид из окна',
+  'Хорошее соотношение цена / качество',
+  'Историческая часть города',
+  'Метро рядом',
+];
+
+const offerTypes = [
+  'palace',
+  'flat',
+  'house',
+  'bungalow',
+  'hotel',
+];
+
+const offerCheckInOut = [
+  '12:00',
+  '13:00',
+  '14:00',
+];
+
+const offerFeatures = [
+  'wifi',
+  'dishwasher',
+  'parking',
+  'washer',
+  'elevator',
+];
+
+const offerPhotos = [
+  'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg',
+  'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg',
+];
+
 const getRandomPositiveInteger = (from, to) => {
   const lower = Math.ceil(Math.min(Math.abs(from), Math.abs(to)));
   const upper = Math.floor(Math.max(Math.abs(from), Math.abs(to)));
@@ -19,22 +67,16 @@ const getAvatarId = (number) => {
   return number;
 };
 
-const offerTypesArr = ['palace', 'flat', 'house', 'bungalow', 'hotel'];
-const offerCheckInOutArr = ['12:00', '13:00', '14:00'];
+const getSingleRandomElement = (items) => items[getRandomPositiveInteger(0, items.length - 1)];
 
-const getSingleRandomItemFromArr = (arr) => arr[~~(Math.random() * arr.length)];
-
-const offerFeaturesArr = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator'];
-const offerPhotosArr = ['https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg', 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg'];
-
-const getRandomItemsFromArr = (arr) => {
+const getRandomItems = (items) => {
   const result = [];
-  const maxLength = arr.length;
-  const newArrayLength = getRandomPositiveInteger(1, maxLength);
+  const maxLength = items.length;
+  const itemsCount = getRandomPositiveInteger(1, maxLength);
 
-  for (let index = 0; index < newArrayLength; index++) {
+  for (let index = 0; index < itemsCount; index++) {
     const indexOfEl = getRandomPositiveInteger(0, maxLength - 1);
-    const el = arr[indexOfEl];
+    const el = items[indexOfEl];
 
     if (!result.includes(el)) {
       result.push(el);
@@ -43,38 +85,39 @@ const getRandomItemsFromArr = (arr) => {
   return result;
 };
 
-const locationLat = getRandomPositiveFloat(35.65000, 35.70000, 5);
-const locationLng = getRandomPositiveFloat(139.70000, 139.80000, 5);
+const getLocation = () => ({
+  lat: getRandomPositiveFloat(35.65000, 35.70000, 5),
+  lng: getRandomPositiveFloat(139.70000, 139.80000, 5),
+});
 
-const offerTitlesArr = ['Объявление №1', 'Объявление №2', 'Объявление №3', 'Объявление №4', 'Объявление №5', 'Объявление №6', 'Объявление №7', 'Объявление №8', 'Объявление №9', 'Объявление №10'];
-
-const offerDescriptionsArr = ['Евроремонт', 'Прекрасный вид из окна', 'Хорошее соотношение цена / качество', 'Историческая часть города', 'Метро рядом'];
-
-const numberOfAdvertisement = 10;
-
-const advertisement = () => ({
+const generateAdvertisement = () => ({
   autor: {
     avatar: `img/avatars/user${getAvatarId(getRandomPositiveInteger(1, 10))}.png`,
   },
   offer: {
-    title: getSingleRandomItemFromArr(offerTitlesArr),
-    address: String(`${locationLat}, ${locationLng}`),
+    title: getSingleRandomElement(offerTitles),
+    address: Object.values(getLocation()).join(', '),
     price: getRandomPositiveInteger(1, 50000),
-    type: getSingleRandomItemFromArr(offerTypesArr),
+    type: getSingleRandomElement(offerTypes),
     rooms: getRandomPositiveInteger(1, 4),
     guests: getRandomPositiveInteger(1, 8),
-    checkin: getSingleRandomItemFromArr(offerCheckInOutArr),
-    checkout: getSingleRandomItemFromArr(offerCheckInOutArr),
-    features: getRandomItemsFromArr(offerFeaturesArr),
-    description: getRandomItemsFromArr(offerDescriptionsArr),
-    photos: getRandomItemsFromArr(offerPhotosArr),
+    checkin: getSingleRandomElement(offerCheckInOut),
+    checkout: getSingleRandomElement(offerCheckInOut),
+    features: getRandomItems(offerFeatures),
+    description: getRandomItems(offerDescriptions),
+    photos: getRandomItems(offerPhotos),
   },
-  location: {
-    lat: locationLat,
-    lng: locationLng,
-  },
+  location: getLocation(),
 });
 
-const advertisementArr = Array.from({ length: numberOfAdvertisement }, advertisement);
+const getAdvertisements = () => {
+  const result = [];
 
-advertisementArr();
+  for (let index = 0; index < 10; index++) {
+    result.push(generateAdvertisement());
+  }
+  return result;
+};
+
+// eslint-disable-next-line no-console
+console.log(getAdvertisements());
