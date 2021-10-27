@@ -1,4 +1,4 @@
-const offerTitles = [
+const OFFER_TITLES = [
   'Объявление №1',
   'Объявление №2',
   'Объявление №3',
@@ -11,7 +11,7 @@ const offerTitles = [
   'Объявление №10',
 ];
 
-const offerDescriptions = [
+const OFFER_SECRIPTIONS = [
   'Евроремонт',
   'Прекрасный вид из окна',
   'Хорошее соотношение цена / качество',
@@ -19,7 +19,7 @@ const offerDescriptions = [
   'Метро рядом',
 ];
 
-const offerTypes = [
+const OFFER_TYPES = [
   'palace',
   'flat',
   'house',
@@ -27,13 +27,13 @@ const offerTypes = [
   'hotel',
 ];
 
-const offerCheckInOut = [
+const OFFER_CHECK_IN_OUT = [
   '12:00',
   '13:00',
   '14:00',
 ];
 
-const offerFeatures = [
+const OFFER_FEATURES = [
   'wifi',
   'dishwasher',
   'parking',
@@ -41,7 +41,7 @@ const offerFeatures = [
   'elevator',
 ];
 
-const offerPhotos = [
+const OFFER_PHOTOS = [
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg',
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg',
 ];
@@ -95,17 +95,17 @@ const generateAdvertisement = () => ({
     avatar: `img/avatars/user${getAvatarId(getRandomPositiveInteger(1, 10))}.png`,
   },
   offer: {
-    title: getSingleRandomElement(offerTitles),
+    title: getSingleRandomElement(OFFER_TITLES),
     address: Object.values(getLocation()).join(', '),
     price: getRandomPositiveInteger(1, 50000),
-    type: getSingleRandomElement(offerTypes),
+    type: getSingleRandomElement(OFFER_TYPES),
     rooms: getRandomPositiveInteger(1, 4),
     guests: getRandomPositiveInteger(1, 8),
-    checkin: getSingleRandomElement(offerCheckInOut),
-    checkout: getSingleRandomElement(offerCheckInOut),
-    features: getRandomItems(offerFeatures),
-    description: getRandomItems(offerDescriptions),
-    photos: getRandomItems(offerPhotos),
+    checkin: getSingleRandomElement(OFFER_CHECK_IN_OUT),
+    checkout: getSingleRandomElement(OFFER_CHECK_IN_OUT),
+    features: getRandomItems(OFFER_FEATURES),
+    description: getRandomItems(OFFER_SECRIPTIONS),
+    photos: getRandomItems(OFFER_PHOTOS),
   },
   location: getLocation(),
 });
