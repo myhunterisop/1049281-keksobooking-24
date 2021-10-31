@@ -1,12 +1,3 @@
-export {
-  OFFER_TITLES,
-  OFFER_SECRIPTIONS,
-  OFFER_TYPES,
-  OFFER_CHECK_IN_OUT,
-  OFFER_FEATURES,
-  OFFER_PHOTOS
-};
-
 const OFFER_TITLES = [
   'Объявление №1',
   'Объявление №2',
@@ -55,4 +46,11 @@ const OFFER_PHOTOS = [
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg',
 ];
 
-
+export {
+  OFFER_TITLES,
+  OFFER_SECRIPTIONS,
+  OFFER_TYPES,
+  OFFER_CHECK_IN_OUT,
+  OFFER_FEATURES,
+  OFFER_PHOTOS
+};
