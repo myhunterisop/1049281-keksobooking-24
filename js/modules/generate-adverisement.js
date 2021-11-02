@@ -13,7 +13,7 @@ import {
   getSingleRandomElement,
   getRandomItems,
   getLocation
-} from '../util.js';
+} from '../utils.js';
 
 const generateAdvertisement = () => ({
   autor: {
